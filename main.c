@@ -6,12 +6,12 @@
 //typedef void_func_ptr VTABLE[3];
 typedef int (*VTABLE[3])();
 
-typedef struct
+typedef struct 
 {
     VTABLE const* vtable;
     int x;
     int y;
-}forme;
+} forme;
 int get_x(forme* f) { return f->x; }
 int get_y(forme* f) { return f->y; }
 int print_forme(forme* f) { printf("x %i y %i\n", f->x, f->y); return 0; }
@@ -22,7 +22,7 @@ typedef struct
     int rayon;
 } cercle;
 int print_cercle(forme* f) 
-{ 
+{
     printf("cercle de rayon %i\n", ((cercle*)f)->rayon);
     print_forme(f);
     return 0;
@@ -35,21 +35,22 @@ typedef struct
     int hauteur;
     int longueur;
 } carre;
-int print_type_carre(forme* f) 
-{ 
+int print_carre(forme* f) 
+{
     printf("carre de hauteur %i longueur %i\n", ((carre*)f)->hauteur, ((carre*)f)->longueur); 
     print_forme(f);
     return 0;
 }
-const VTABLE carre_vtable = {get_x, get_y, print_type_carre};
+const VTABLE carre_vtable = {get_x, get_y, print_carre};
 
-int main()
+int main() 
 {
-    carre  ca = (carre) { .forme = (forme){ .vtable = &carre_vtable , .x=0, .y=1 }, .hauteur = 10,.longueur = 20}; 
-    cercle ce = (cercle){ .forme = (forme){ .vtable = &cercle_vtable, .x=2, .y=3 }, .rayon = 5};
+    carre  ca = (carre)  { .forme = (forme){ .vtable = &carre_vtable , .x=0, .y=1 }, .hauteur = 10,.longueur = 20}; 
+    cercle ce = (cercle) { .forme = (forme){ .vtable = &cercle_vtable, .x=2, .y=3 }, .rayon = 5};
 
     forme* formes[2] = { (void*)(&ca), (void*)(&ce) };
-    for (int i = 0; i < 2; i++)
+
+    for (int i = 0; i < 2; i++) 
     {
         forme* f = formes[i];
 
