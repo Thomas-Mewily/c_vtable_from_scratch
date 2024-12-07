@@ -48,7 +48,7 @@ int main()
     carre  ca = { .forme = { .vtable = &carre_vtable , .x=0, .y=1 }, .hauteur = 10,.longueur = 20}; 
     cercle ce = { .forme = { .vtable = &cercle_vtable, .x=2, .y=3 }, .rayon = 5};
 
-    forme* formes[2] = { (void*)(&ca), (void*)(&ce) };
+    forme* formes[2] = { (forme*)(&ca), (forme*)(&ce) };
 
     for (int i = 0; i < 2; i++) 
     {
