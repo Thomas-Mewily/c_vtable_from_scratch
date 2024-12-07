@@ -1,3 +1,5 @@
+// Inspired by Bjarne Stroustrup object inheritance vtable implementation in 1989
+// https://www.usenix.org/legacy/publications/compsystems/1989/fall_stroustrup.pdf
 #include <stdio.h>
 
 typedef int (*void_func_ptr)();
@@ -42,8 +44,8 @@ const void_func_ptr carre_vtable[3] = {get_x, get_y, print_type_carre};
 
 int main()
 {
-    carre  ca = (carre){ .forme = (forme){ .vtable = &carre_vtable, .x=0, .y=1 }, .hauteur = 10,.longueur = 20}; 
-    cercle ce = (cercle){ .forme = (forme){ .vtable = &cercle_vtable, .x=2,.y=3}, .rayon = 5};
+    carre  ca = (carre) { .forme = (forme){ .vtable = &carre_vtable , .x=0, .y=1 }, .hauteur = 10,.longueur = 20}; 
+    cercle ce = (cercle){ .forme = (forme){ .vtable = &cercle_vtable, .x=2, .y=3 }, .rayon = 5};
 
     forme* formes[2] = { (void*)(&ca), (void*)(&ce) };
     for (int i = 0; i < 2; i++)
