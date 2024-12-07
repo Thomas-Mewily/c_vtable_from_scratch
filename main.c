@@ -61,3 +61,13 @@ int main()
 
     return 0;
 }
+
+/*
+carre de hauteur 10 longueur 20
+x 0 y 1
+get_x() = 0, get_y() = 1       
+
+cercle de rayon 5
+x 2 y 3
+get_x() = 2, get_y() = 3
+*/
