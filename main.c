@@ -2,8 +2,9 @@
 // https://www.usenix.org/legacy/publications/compsystems/1989/fall_stroustrup.pdf
 #include <stdio.h>
 
-typedef int (*void_func_ptr)();
-typedef void_func_ptr VTABLE[3];
+//typedef int (*void_func_ptr)();
+//typedef void_func_ptr VTABLE[3];
+typedef int (*VTABLE[3])();
 
 typedef struct
 {
@@ -26,7 +27,7 @@ int print_cercle(forme* p)
     print_forme(p);
     return 0;
 }
-const void_func_ptr cercle_vtable[3] = {get_x, get_y, print_cercle};
+const VTABLE cercle_vtable = {get_x, get_y, print_cercle};
 
 typedef struct 
 {
@@ -40,7 +41,7 @@ int print_type_carre(forme* p)
     print_forme(p);
     return 0;
 }
-const void_func_ptr carre_vtable[3] = {get_x, get_y, print_type_carre};
+const VTABLE carre_vtable = {get_x, get_y, print_type_carre};
 
 int main()
 {
