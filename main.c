@@ -12,19 +12,19 @@ typedef struct
     int x;
     int y;
 }forme;
-int get_x(forme* p) { return p->x; }
-int get_y(forme* p) { return p->y; }
-int print_forme(forme* p) { printf("x %i y %i\n", p->x, p->y); return 0; }
+int get_x(forme* f) { return f->x; }
+int get_y(forme* f) { return f->y; }
+int print_forme(forme* f) { printf("x %i y %i\n", f->x, f->y); return 0; }
 
 typedef struct 
 {
     forme forme;
     int rayon;
 } cercle;
-int print_cercle(forme* p) 
+int print_cercle(forme* f) 
 { 
-    printf("cercle de rayon %i\n", ((cercle*)p)->rayon);
-    print_forme(p);
+    printf("cercle de rayon %i\n", ((cercle*)f)->rayon);
+    print_forme(f);
     return 0;
 }
 const VTABLE cercle_vtable = {get_x, get_y, print_cercle};
@@ -35,10 +35,10 @@ typedef struct
     int hauteur;
     int longueur;
 } carre;
-int print_type_carre(forme* p) 
+int print_type_carre(forme* f) 
 { 
-    printf("carre de hauteur %i longueur %i\n", ((carre*)p)->hauteur, ((carre*)p)->longueur); 
-    print_forme(p);
+    printf("carre de hauteur %i longueur %i\n", ((carre*)f)->hauteur, ((carre*)f)->longueur); 
+    print_forme(f);
     return 0;
 }
 const VTABLE carre_vtable = {get_x, get_y, print_type_carre};
